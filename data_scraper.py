@@ -16,7 +16,7 @@ soup = BeautifulSoup(response.text, 'html.parser')
 script = soup.find('script', text = re.compile('var vivinoCacheKey'))
 vivinoCacheKey = str(script).split('vivinoCacheKey = ')[-1].split(';')[0].replace("'",'').strip()
 
-def get_wine_data(price_range_max, price_range_min):
+def get_wine(price_range_max, price_range_min):
     rows = []
     # Iterate through countries and wine types
     api_url = 'https://www.vivino.com/api/explore/explore'
@@ -143,7 +143,7 @@ if __name__ == '__main__':
     parser.add_argument('review_data', help='review data file (CSV)', type=str, default='review_data.csv')
     args = parser.parse_args()
 
-    wine_data = get_wine_data(args.price_range_max, args.price_range_min)
+    wine_data = get_wine(args.price_range_max, args.price_range_min)
     wine_data.to_csv(args.wine_data, index=False)
     review_data = get_review_data(wine_data)
     review_data.to_csv(args.review_data, index=False)
