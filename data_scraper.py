@@ -46,7 +46,10 @@ def get_wine(price_range_max, price_range_min):
                 year = each["vintage"]["year"]
                 id = each["vintage"]["wine"]["id"]
                 rating =  each['vintage']['statistics']['ratings_average']
-                price = each['price']['amount']
+                try:
+                    price = each['price']['amount']
+                except:
+                    price = "None_Supplied"
                 winery = each["vintage"]["wine"]["winery"]["name"]
                 ratings_count = each["vintage"]["statistics"]["ratings_count"]
                 country = country
@@ -111,6 +114,7 @@ def get_review_data(df):
                     ratings.append(
                             [
                                 row["wine ID"],
+                                row["year"],
                                 r["rating"],
                                 r["note"],
                                 r["created_at"],
@@ -128,7 +132,7 @@ def get_review_data(df):
 
 
         df_reviews = pd.DataFrame(
-            ratings, columns=["wine ID", "User Rating", "Review", "CreatedAt", "country"]
+            ratings, columns=["wine ID", "year", "User Rating", "Review", "CreatedAt", "country"]
         )
 
     return df_reviews
@@ -139,12 +143,12 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('price_range_max', help='upper boundary of the price', type=int, default=200)
     parser.add_argument('price_range_min', help='lower boundary of the price', type=int, default=20)
-    parser.add_argument('wine_data', help='wine data file (CSV)', type=str, default='wine_data.csv')
-    parser.add_argument('review_data', help='review data file (CSV)', type=str, default='review_data.csv')
+    parser.add_argument('wine_data', help='wine data file (pkl)', type=str, default='asset/wines.pkl')
+    parser.add_argument('review_data', help='review data file (pkl)', type=str, default='asset/reviews.pkl')
     args = parser.parse_args()
 
     wine_data = get_wine(args.price_range_max, args.price_range_min)
-    wine_data.to_csv(args.wine_data, index=False)
+    wine_data.to_pickle(args.wine_data)
     review_data = get_review_data(wine_data)
-    review_data.to_csv(args.review_data, index=False)
+    review_data.to_pickle(args.review_data)
     
