@@ -20,7 +20,12 @@ def clean_wines(df):
     #normalize the value of flavors by dividing ratings_count
     for flavor in flavors:
         cleaned_wine[flavor] = cleaned_wine[flavor]/cleaned_wine['ratings_count']
-
+    cleaned_wine = cleaned_wine.astype({'name': 'string', 'year': 'category', 'country': 'category', 'image': 'string'})
+    for col in cleaned_wine.select_dtypes('number'):
+        cleaned_wine[col] = pd.to_numeric(cleaned_wine[col], downcast='integer')
+        if cleaned_wine[col].dtype == 'float':
+            cleaned_wine[col] = pd.to_numeric(cleaned_wine[col], downcast='float')
+    cleaned_wine = cleaned_wine.replace(['None_Supplied'], 'https://www.freeiconspng.com/uploads/no-image-icon-21.png')
     return cleaned_wine
     
 
@@ -32,7 +37,13 @@ def clean_reviews(df):
     df.reset_index(inplace=True)
     df['country'] = df['country'].apply(lambda x: x[0])
     wine_data = wines[['name', 'year', 'wine ID', 'rating', 'price', 'winery', 'image']]
+    for col in wine_data.select_dtypes('number'):
+        wine_data[col] = pd.to_numeric(wine_data[col], downcast='integer')
+        if wine_data[col].dtype == 'float':
+            wine_data[col] = pd.to_numeric(wine_data[col], downcast='float')
     df = pd.merge(wine_data, df, on = ['wine ID', 'year'])
+    df = df.astype({'name': 'string', 'year': 'category', 'winery': 'string', 'image': 'string', 'Review': 'string', 'country': 'category'})
+    df = df.replace(['None_Supplied'], 'https://www.freeiconspng.com/uploads/no-image-icon-21.png')
     return df
 
 
@@ -43,6 +54,7 @@ if __name__ == '__main__':
     parser.add_argument('review_data', help='review data file (pkl)', type=str, default='asset/reviews.pkl')
     parser.add_argument('cleaned_wine', help='output of cleaned wine data file (pkl)', type=str, default='asset/cleaned_wines.pkl')
     parser.add_argument('cleaned_review', help='output of cleaned review data file (pkl)', type=str, default='asset/cleaned_reviews.pkl')
+    parser.add_argument('cleaned_noreview', help='output of cleaned review data (without Review column) file (pkl)', type=str, default='asset/cleaned_noreviews.pkl')
     args = parser.parse_args()
 
     wines =  pd.read_pickle(args.wine_data)
@@ -51,3 +63,5 @@ if __name__ == '__main__':
     reviews = pd.read_pickle(args.review_data)
     cleaned_reviews = clean_reviews(reviews)
     cleaned_reviews.to_pickle(args.cleaned_review)
+    cleaned_noreviews = cleaned_reviews.drop('Review', axis = 1)
+    cleaned_noreviews.to_pickle(args.cleaned_noreview)
