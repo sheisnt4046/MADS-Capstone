@@ -75,6 +75,14 @@ gd2.configure_column('index', hide=True)
 gd2.configure_column(
     'image'
 )
+gd2.configure_column(
+    'image',
+    cellRenderer=JsCode('''
+    function(params) {
+        return '<a href="' + params.value + '" target="_blank">' + '<img src="' + params.value + '" width="60" >' + '</a>'
+    };
+    ''')
+)
 
 gridoptions2 = gd2.build()
 ok = st.button("Make Recommendation")
