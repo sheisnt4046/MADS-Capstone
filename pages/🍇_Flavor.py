@@ -17,12 +17,11 @@ st.title('Flavor Recommendation')
 
 
 df = pd.read_pickle("asset/cleaned_wines.pkl")
-df = df.iloc[:,10:]
 
 @st.cache
 def recommend_flavor(flavor_matrix):
     # Find the wines with a similar cosine-sim value and order them from bigges number    
-    distances = cdist(df, flavor_matrix.reshape(1, -1), 'cosine')
+    distances = cdist(flavor_matrix.reshape(1, -1), df.iloc[:,10:], 'cosine')
 
     # Extract top 30 wine indexes with a similar cosine-sim value
     top30_indexes = list(np.argsort(distances)[:, :30][0])
