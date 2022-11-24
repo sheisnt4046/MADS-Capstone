@@ -50,25 +50,25 @@ st.header('Rank your flavor preference!')
 flavor_d = {'black_fruit':0, 'citrus_fruit':0, 'dried_fruit':0, 'earth':0, 'floral':0,
            'microbio':0, 'non_oak':0, 'oak':0, 'red_fruit':0, 'spices':0, 'tree_fruit':0,'tropical_fruit':0, 'vegetal':0}
     
-flavor_1 = st.selectbox('Select your 1 preference:',('black_fruit', 'citrus_fruit', 'dried_fruit', 'earth', 'floral',
+flavor_1 = st.selectbox('Select your 1st preference:',('black_fruit', 'citrus_fruit', 'dried_fruit', 'earth', 'floral',
            'microbio', 'non_oak', 'oak', 'red_fruit', 'spices', 'tree_fruit','tropical_fruit', 'vegetal'))
-st.write('You top 1 flavor:', flavor_1)
+st.write('Your top 1 flavor:', flavor_1)
 
-flavor_2 = st.selectbox('Select your 1 preference:',('black_fruit', 'citrus_fruit', 'dried_fruit', 'earth', 'floral',
+flavor_2 = st.selectbox('Select your 2nd preference:',('black_fruit', 'citrus_fruit', 'dried_fruit', 'earth', 'floral',
            'microbio', 'non_oak', 'oak', 'red_fruit', 'spices', 'tree_fruit','tropical_fruit', 'vegetal'))
-st.write('You top 2 flavor:', flavor_2)
+st.write('Your top 2 flavor:', flavor_2)
 
-flavor_3 = st.selectbox('Select your 1 preference:',('black_fruit', 'citrus_fruit', 'dried_fruit', 'earth', 'floral',
+flavor_3 = st.selectbox('Select your 3rd preference:',('black_fruit', 'citrus_fruit', 'dried_fruit', 'earth', 'floral',
            'microbio', 'non_oak', 'oak', 'red_fruit', 'spices', 'tree_fruit','tropical_fruit', 'vegetal'))
-st.write('You top 3 flavor:', flavor_3)
+st.write('Your top 3 flavor:', flavor_3)
 
-flavor_4 = st.selectbox('Select your 1 preference:',('black_fruit', 'citrus_fruit', 'dried_fruit', 'earth', 'floral',
+flavor_4 = st.selectbox('Select your 4th preference:',('black_fruit', 'citrus_fruit', 'dried_fruit', 'earth', 'floral',
            'microbio', 'non_oak', 'oak', 'red_fruit', 'spices', 'tree_fruit','tropical_fruit', 'vegetal'))
-st.write('You top 4 flavor:', flavor_4)
+st.write('Your top 4 flavor:', flavor_4)
 
-flavor_5 = st.selectbox('Select your 1 preference:',('black_fruit', 'citrus_fruit', 'dried_fruit', 'earth', 'floral',
+flavor_5 = st.selectbox('Select your 5th preference:',('black_fruit', 'citrus_fruit', 'dried_fruit', 'earth', 'floral',
            'microbio', 'non_oak', 'oak', 'red_fruit', 'spices', 'tree_fruit','tropical_fruit', 'vegetal'))
-st.write('You top 5 flavor:', flavor_5)
+st.write('Your top 5 flavor:', flavor_5)
 
 flavor_d[flavor_1] = 10/25
 flavor_d[flavor_2] = 6/25
