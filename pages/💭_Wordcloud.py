@@ -4,6 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from PIL import Image
 import requests
+import nltk
 from nltk.corpus import stopwords
 from wordcloud import WordCloud
 from st_aggrid import AgGrid, JsCode
@@ -13,11 +14,10 @@ from time import sleep
 
 nltk.download('stopwords')
 
-
 st.title('Wordcloud')
 chosen_list = st.radio(
     "Which list to generate Wordcloud",
-    ('Favorite List', 'Recomenede List'))
+    ('Favorite List', 'Recommend List'))
 
 if chosen_list == 'Favorite List':
     st.write('Select Favorite List:')
