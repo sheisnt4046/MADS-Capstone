@@ -11,6 +11,9 @@ from st_aggrid.grid_options_builder import GridOptionsBuilder
 from time import sleep
 
 
+nltk.download('stopwords')
+
+
 st.title('Wordcloud')
 chosen_list = st.radio(
     "Which list to generate Wordcloud",
