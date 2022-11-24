@@ -87,8 +87,9 @@ gd2.configure_column(
 gridoptions2 = gd2.build()
 ok = st.button("Make Recommendation")
 if ok:
-    recomendation_list = recommend_flavor(flavor_matrix) 
-    AgGrid(recomendation_list, gridOptions = gridoptions2, columns_auto_size_mode='FIT_CONTENTS')
+    recomendation_list = recommend_flavor(flavor_matrix)
+    recomendation_list = recomendation_list[['name', 'year', 'wine ID', 'rating', 'price', 'winery', 'ratings_count', 'country', 'image']]
+    AgGrid(recomendation_list, gridOptions = gridoptions2, allow_unsafe_jscode = True, columns_auto_size_mode='FIT_CONTENTS')
     st.success('Done!')
     st.session_state['recomend'] = recomendation_list
 
