@@ -69,7 +69,7 @@ flavor_d[flavor_4] = 3/25
 flavor_d[flavor_5] = 2/25
 flavor_matrix = np.array(list(flavor_d.values()))
 
-gd2 = GridOptionsBuilder.from_dataframe(recommend_flavor(flavor_matrix))
+gd2 = GridOptionsBuilder.from_dataframe(recommend_flavor(flavor_matrix)[['name', 'year', 'wine ID', 'rating', 'price', 'winery', 'ratings_count', 'country', 'image']])
 gd2.configure_grid_options(rowHeight=60)
 gd2.configure_column('index', hide=True)
 gd2.configure_column(
@@ -88,8 +88,7 @@ gridoptions2 = gd2.build()
 ok = st.button("Make Recommendation")
 if ok:
     recomendation_list = recommend_flavor(flavor_matrix)
-    recomendation_list = recomendation_list[['name', 'year', 'wine ID', 'rating', 'price', 'winery', 'ratings_count', 'country', 'image']]
     AgGrid(recomendation_list, gridOptions = gridoptions2, allow_unsafe_jscode = True, columns_auto_size_mode='FIT_CONTENTS')
     st.success('Done!')
-    st.session_state['recommend'] = recomendation_list
+    st.session_state['recomend'] = recomendation_list
 
