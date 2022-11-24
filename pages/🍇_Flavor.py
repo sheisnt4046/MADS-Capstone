@@ -91,5 +91,5 @@ if ok:
     recomendation_list = recomendation_list[['name', 'year', 'wine ID', 'rating', 'price', 'winery', 'ratings_count', 'country', 'image']]
     AgGrid(recomendation_list, gridOptions = gridoptions2, allow_unsafe_jscode = True, columns_auto_size_mode='FIT_CONTENTS')
     st.success('Done!')
-    st.session_state['recomend'] = recomendation_list
+    st.session_state['recommend'] = recomendation_list
 
