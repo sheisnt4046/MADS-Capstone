@@ -17,14 +17,31 @@ nltk.download('stopwords')
 st.title('Wordcloud')
 chosen_list = st.radio(
     "Which list to generate Wordcloud",
-    ('Favorite List', 'Recommend List'))
+    ('Favorite List', 'Recommend List', 'Flavor Formula'))
 
 if chosen_list == 'Favorite List':
     st.write('Select Favorite List:')
-    df = st.session_state['favorite']
-else:
-    st.write("Select Recomenede List:")
-    df = st.session_state['recomend']
+    try:
+        df = st.session_state['favorite']
+        if len(df)==0:
+            st.error('Please build the favorite list to make WordCloud.')
+    except:
+        df = pd.DataFrame()
+        st.error('Please build the favorite list to make WordCloud.')
+if chosen_list == 'Recommend List':
+    st.write("Select Recommend List:")
+    try:
+        df = st.session_state['recomend']
+    except:
+        df = pd.DataFrame()
+        st.error('Please generate the recommend list to make WordCloud.')
+if chosen_list == 'Flavor Formula':
+    st.write("Select Flavor Formula:")
+    try:
+        df = st.session_state['flavor']
+    except:
+        df = pd.DataFrame()
+        st.error('Please create the flavor formula to make WordCloud.')
 
 gd2 = GridOptionsBuilder.from_dataframe(df)
 gd2.configure_grid_options(rowHeight=60)

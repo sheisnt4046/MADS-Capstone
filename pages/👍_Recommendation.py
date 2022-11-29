@@ -100,6 +100,7 @@ st.session_state['favorite'] = sel_data
 ok = st.button("Make Recommendation")
 if ok:
     recomendation_list = recommend_knn(sel_idx) 
+    st.header('Your Recommend List')
     AgGrid(recomendation_list, gridOptions = gridoptions2, allow_unsafe_jscode = True, columns_auto_size_mode='FIT_CONTENTS')
     st.success('Done!')
     st.session_state['recomend'] = recomendation_list
