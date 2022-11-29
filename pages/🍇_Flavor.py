@@ -85,7 +85,7 @@ def recommend_flavor(flavor_matrix):
     # Sort only the top 10 by the highest rating
     df_new = df_new.sort_values(by='rating', ascending=False).head(10)
     # print('Top wines with similar reviews according to the user list: ')
-    return df_new
+    return df_new[['name', 'year', 'wine ID', 'rating', 'price', 'winery', 'ratings_count', 'country', 'image']]
 
 
 st.header('Rank your flavor preference!')
@@ -117,12 +117,9 @@ flavor_d[flavor_4] = 3/25
 flavor_d[flavor_5] = 2/25
 flavor_matrix = np.array(list(flavor_d.values()))
 
-gd2 = GridOptionsBuilder.from_dataframe(recommend_flavor(flavor_matrix)[['name', 'year', 'wine ID', 'rating', 'price', 'winery', 'ratings_count', 'country', 'image']])
+gd2 = GridOptionsBuilder.from_dataframe(recommend_flavor(flavor_matrix))
 gd2.configure_grid_options(rowHeight=60)
 gd2.configure_column('index', hide=True)
-gd2.configure_column(
-    'image'
-)
 gd2.configure_column(
     'image',
     cellRenderer=JsCode('''
