@@ -11,16 +11,13 @@ from st_aggrid import AgGrid, JsCode
 from st_aggrid.grid_options_builder import GridOptionsBuilder
 from time import sleep
 
-
-nltk.download('stopwords')
-
 st.title('Wordcloud')
 chosen_list = st.radio(
     "Which list to generate Wordcloud",
     ('Favorite List', 'Recommend List', 'Flavor Formula'))
 
 if chosen_list == 'Favorite List':
-    st.write('Select Favorite List:')
+    st.caption('Select Favorite List:')
     try:
         df = st.session_state['favorite']
         if len(df)==0:
@@ -29,14 +26,14 @@ if chosen_list == 'Favorite List':
         df = pd.DataFrame()
         st.error('Please build the favorite list to make WordCloud.')
 if chosen_list == 'Recommend List':
-    st.write("Select Recommend List:")
+    st.caption("Select Recommend List:")
     try:
         df = st.session_state['recomend']
     except:
         df = pd.DataFrame()
         st.error('Please generate the recommend list to make WordCloud.')
 if chosen_list == 'Flavor Formula':
-    st.write("Select Flavor Formula:")
+    st.caption("Select Flavor Formula:")
     try:
         df = st.session_state['flavor']
     except:
@@ -89,12 +86,12 @@ def get_text(df=df):
             page += 1
     return text
 
+nltk.download('stopwords')
 add_stopwords = {'well', 'nice', 'good', 'excellent', 'better', 'big', 'great', 'well', 'really', 
                  'taste', 'note', 'notes', 'nose', 'palate', 'aroma', 'flavor', 'color', 'body',
                  'finish', 'year', 'drink', 'long', 'still', 'like', 'one', 'hint', 'hour', 'month', 'bit',
                  'wine', 'bottle'}
 stopwords_list = list(set(stopwords.words('english')) | set(stopwords.words('french')) | set(stopwords.words('italian')) | set(stopwords.words('german')) | set(stopwords.words('portuguese')) | set(stopwords.words('spanish')) | add_stopwords)
-
 
 def make_wordcloud(text, stop_words, mask):
     wine_mask = np.array(Image.open(mask))

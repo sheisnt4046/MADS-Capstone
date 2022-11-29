@@ -65,7 +65,7 @@ if option == 'Vegetal':
                     Two classic examples are Loire Valley Cabernet Franc, which has aromas of green pepper, \
                     and New Zealand Sauvignon Blanc, with its aromatic jalapeño and grassy character."
 
-st.caption(display_text)
+st.write(display_text)
 
 df = pd.read_pickle("asset/cleaned_wines.pkl")
 
@@ -73,15 +73,12 @@ df = pd.read_pickle("asset/cleaned_wines.pkl")
 def recommend_flavor(flavor_matrix):
     # Find the wines with a similar cosine-sim value and order them from bigges number    
     distances = cdist(flavor_matrix.reshape(1, -1), df.iloc[:,10:], 'cosine')
-
     # Extract top 30 wine indexes with a similar cosine-sim value
     top30_indexes = list(np.argsort(distances)[:, :30][0])
-
     # Creating the new data set to show similar wines
     df_new = pd.DataFrame()
     for each in top30_indexes:
         df_new = df_new.append(pd.DataFrame(df[df.index == each]))
-
     # Sort only the top 10 by the highest rating
     df_new = df_new.sort_values(by='rating', ascending=False).head(10)
     # print('Top wines with similar reviews according to the user list: ')
@@ -96,19 +93,15 @@ flavor_t = ('Black Fruit', 'Citrus Fruit', 'Dried Fruit', 'Earth', 'Floral',
         'Microbio', 'Non-oak', 'Oak', 'Red Fruit', 'Spicy', 'Tree Fruit','Tropical Fruit', 'Vegetal')
 
 flavor_1 = st.selectbox('Select your 1st preference:', flavor_t)
-st.write('Your 1st pick:', flavor_1)
-
+st.caption('Your 1st pick:' + flavor_1)
 flavor_2 = st.selectbox('Select your 2nd preference:', tuple(flavor for flavor in flavor_t if flavor != flavor_1))
-st.write('Your 2nd pick:', flavor_2)
-
+st.caption('Your 2nd pick:' + flavor_2)
 flavor_3 = st.selectbox('Select your 3rd preference:', tuple(flavor for flavor in flavor_t if flavor not in [flavor_1, flavor_2]))
-st.write('Your 3rd pick:', flavor_3)
-
+st.caption('Your 3rd pick:' + flavor_3)
 flavor_4 = st.selectbox('Select your 4th preference:', tuple(flavor for flavor in flavor_t if flavor not in [flavor_1, flavor_2, flavor_3]))
-st.write('Your 4th pick:', flavor_4)
-
+st.caption('Your 4th pick:' + flavor_4)
 flavor_5 = st.selectbox('Select your 5th preference:',tuple(flavor for flavor in flavor_t if flavor not in [flavor_1, flavor_2, flavor_3, flavor_4]))
-st.write('Your 5th pick:', flavor_5)
+st.caption('Your 5th pick:' + flavor_5)
 
 flavor_d[flavor_1] = 10/25
 flavor_d[flavor_2] = 6/25
