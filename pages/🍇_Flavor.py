@@ -12,10 +12,7 @@ st.title('Flavor Recommendation')
 option = st.selectbox(
         "Which flavor would you like to know more about?",
         ('Black Fruit', 'Citrus Fruit', 'Dried Fruit', 'Earth', 'Floral',
-        'Microbio', 'Non-oak', 'Oak', 'Red Fruit', 'Spicy', 'Tree Fruit','Tropical Fruit', 'Vegetal'),
-        label_visibility="visible",
-        disabled=False,
-    )
+        'Microbio', 'Non-oak', 'Oak', 'Red Fruit', 'Spicy', 'Tree Fruit','Tropical Fruit', 'Vegetal'))
 
 if option == 'Black Fruit':
     display_text = "Simply enough, most black fruit actually has the word “black” in the name—blackberry, \
