@@ -10,7 +10,7 @@ st.set_page_config(
 st.sidebar.success('Select a page.')
 
 st.title('Wine Roadmap')
-st.header(“Life is struggle, you deserve a wine”)
+st.header("Life is struggle, you deserve a wine")
 
 st.markdown("""
 This website is designed for both **wine beginners** and **wine lovers**.
