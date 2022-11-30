@@ -4,8 +4,6 @@ from st_aggrid.grid_options_builder import GridOptionsBuilder
 import pandas as pd
 import numpy as np
 from scipy.spatial.distance import cdist
-import pickle
-
 
 st.title('Flavor Recommendation')
 
