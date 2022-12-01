@@ -12,7 +12,7 @@ st.sidebar.success('Select a page.')
 st.title('Wine Roadmap')
 
 st.markdown("""
-### This website is designed for both `wine beginners` and `wine lovers`.
+### This website is designed for both **wine beginners** and **wine lovers**.
 
 #### If you are a person who has no idea which wine to be your first choice --> click 🍇_Flavor page
 
