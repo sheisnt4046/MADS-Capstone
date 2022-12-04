@@ -37,9 +37,9 @@ Suppose you choose `Recommend List` and click `Make Wordcloud`. Then, we will ge
 
 
 Tips: you can either
-1.	Save Wordcloud images of both Favorite List and Recommend List. Compare two Wordcloud to see the similarity and differences. *OR*
-2.	Click 🗺️Visualization page and find the cluster, which keywords also show on your word cloud. Also, you can refer to the closest cluster since the flavor might be similar and perhaps could be one of your choices.
+1.	Save Wordcloud images of both Favorite List and Recommend List. Compare two Wordclouds to see the similarity and differences. *OR*
+2.	Click 🗺️Visualization page and find the cluster, which keywords also show on your wordcloud. Also, you can refer to the closest cluster since the flavor might be similar and perhaps could be one of your choices.
 
-#### Hope you enjoy this website. Life is a struggle, you deserve wine!
+#### Hope you enjoy this website. Life is struggle, you deserve a wine!
 """)
 
