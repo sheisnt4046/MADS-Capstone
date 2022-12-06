@@ -17,8 +17,8 @@ Default command:<br>
 python model.py asset/cleaned_reviews.pkl model/vectorizer.pkl model/km.pkl model/X_ar.npy
 
 ## About the Streamlit Pages
-1. 1_🍷_Index.py: Introduction and instruction of the Web app
+1. 1_🍷_Index.py: Introduction and instructions
 2. 🍇_Flavor.py: Rank the flavors and make a flavor formula to match wines
-3. 👍_Recommendation.py: Select favorite wine list to generate the recommended wine list
+3. 👍_Recommendation.py: Create favorite wine list to generate the recommended wine list
 4. 💭_Wordcloud.py: Visualize the list of wines by making Wordcloud 
 5. 🗺️_Visualization.py: Exploring wines with visualizations 
