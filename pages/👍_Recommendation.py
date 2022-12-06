@@ -16,9 +16,18 @@ def load_data(data):
     return df
 df = load_data("asset/cleaned_noreviews.pkl")
 
-with open('model/km.pkl', 'rb') as kmfile:
-    km = pickle.load(kmfile)
-X_ar = np.load('model/X_ar.npy')
+@st.cache
+def load_model(model):
+    with open(model, 'rb') as kmfile:
+        km = pickle.load(kmfile)
+    return km
+km = load_model('model/km.pkl')
+
+@st.cache
+def load_array(X_ar):
+    X_ar = np.load(X_ar)
+    return X_ar
+X_ar = load_array('model/X_ar.npy')
 
 @st.cache
 def get_mean_vector(idx_list, km = km, X_ar = X_ar): 

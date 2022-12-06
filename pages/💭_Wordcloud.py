@@ -9,7 +9,6 @@ from nltk.corpus import stopwords
 from wordcloud import WordCloud
 from st_aggrid import AgGrid, JsCode
 from st_aggrid.grid_options_builder import GridOptionsBuilder
-from time import sleep
 
 st.title('Wordcloud')
 chosen_list = st.radio(
