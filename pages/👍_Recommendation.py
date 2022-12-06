@@ -9,15 +9,16 @@ import pickle
 
 st.title('Recommendation')
 
+@st.cache
+def load_data(data):
+    df = pd.read_pickle(data)
+    df = df.reset_index(level=0)
+    return df
+df = load_data("asset/cleaned_noreviews.pkl")
 
-df = pd.read_pickle("asset/cleaned_noreviews.pkl")
-df = df.reset_index(level=0)
-with open('model/vectorizer.pkl', 'rb') as vectorizerfile:
-    vectorizer = pickle.load(vectorizerfile)
 with open('model/km.pkl', 'rb') as kmfile:
     km = pickle.load(kmfile)
 X_ar = np.load('model/X_ar.npy')
-
 
 @st.cache
 def get_mean_vector(idx_list, km = km, X_ar = X_ar): 
