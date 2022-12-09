@@ -1,7 +1,7 @@
 # MADS-Capstone: Wine Roadmap Web app
 
 ## App URL
-[![Streamlit App](http://54.235.35.125:8501/)
+http://54.235.35.125:8501/
 
 ## About the machine learning pipline
 1. data_scraper.py: get wine dataset from Vivino.com<br>
