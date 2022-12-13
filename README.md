@@ -1,4 +1,4 @@
-# MADS-Capstone: Wine Roadmap Web app
+# MADS-Capstone: Wine Roadmap
 
 ## App URL
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](http://54.235.35.125:8501/)
